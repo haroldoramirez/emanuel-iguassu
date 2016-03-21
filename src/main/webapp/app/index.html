@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="iguassuApp" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Iguassu Agência de Empregos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/jpg" href="favicon.jpg"/>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+
+    <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- <link href="styles/animateview.css" rel="stylesheet" /> -->
+    <link href="styles/menu.css" rel="stylesheet"/>
+
+    
+    <div ng-include="'views/templates/templates.html'"></div>
+
+
+  </head>
+
+  <body class="container">
+    <div data-ng-controller="MenuCtrl" class="navbar navbar-default navbar-fixed-top" data-role="navigation" ng-init="init()">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+          <a class="navbar-brand" href="#/">Agência Iguassu</a>
+        </div>
+		<div ng-include="'views/menu/gerente_menu.html'"></div>
+      </div>
+    </div>
+
+    <div ng-view=""></div>
+
+  
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
+
+
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/bairro.js"></script>
+    <script src="scripts/controllers/cargo.js"></script>
+    <script src="scripts/controllers/categoriacurso.js"></script>
+    <script src="scripts/controllers/cidade.js"></script>
+    <script src="scripts/controllers/curso.js"></script>
+    <script src="scripts/controllers/empresa.js"></script>
+    <script src="scripts/controllers/encaminhamento.js"></script>
+    <script src="scripts/controllers/estado.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/pais.js"></script>
+    <script src="scripts/controllers/vaga.js"></script>
+    <script src="scripts/controllers/candidato.js"></script>
+    <script src="scripts/controllers/endereco.js"></script>
+    <script src="scripts/directives/animatedview.js"></script>
+    <script src="scripts/directives/inputdate.js"></script>
+    <script src="scripts/services/baseurl.js"></script>
+    <script src="scripts/services/financeiro.js"></script>
+    <script src="scripts/services/candidato.js"></script>
+    <script src="scripts/services/empresa.js"></script>
+    <script src="scripts/services/vaga.js"></script>
+    <script src="scripts/services/encaminhamento.js"></script>
+    <script src="scripts/services/endereco.js"></script>
+    <script src="scripts/services/cargo.js"></script>
+    <script src="scripts/services/curso.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/services/createaddress.js"></script>
+    <script src="scripts/services/autenticacao.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/services/usuario.js"></script>
+    <script src="scripts/controllers/usuario.js"></script>
+    <script src="scripts/controllers/financeiro.js"></script>
+    <script src="scripts/controllers/configuracoes.js"></script>
+    <script src="scripts/controllers/taxadecadastro.js"></script>
+  </body>
+</html>

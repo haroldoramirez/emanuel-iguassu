@@ -1,0 +1,125 @@
+  <div  class="pull-right">
+    <a href="" class="btn btn-primary"
+       data-ng-click="openLancamento(lancamento)">Adicionar Lançamento
+    </a>
+  </div>
+
+  <h1 ng-init="init()">Lançamentos</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label class="control-label">Data</label>
+      <div ng-show="data" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="data=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="data" is-open="openedDate"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDate($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+
+    <div class="col-md-3">
+      <label class="control-label">Data de vencimento</label>
+      <div ng-show="dataDeVencimento" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="dataDeVencimento=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="dataDeVencimento" is-open="openedDateVencimento"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDateVencimento($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>
+
+    <div class="col-md-3">
+      <label class="control-label">Data de pagamento</label>
+      <div ng-show="dataDePagamento" class="pull-right">
+        <a class="glyphicon glyphicon-remove" data-ng-click="dataDePagamento=null;"></a>
+      </div>
+      <p class="input-group">
+        <input  type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
+                ng-model="dataDePagamento" is-open="openedDatePagamento"
+                show-button-bar="false" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDatePickerDatePagamento($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+    </div>   
+
+    <div class="col-md-3">
+      <div class="pull-right">
+        <br>
+        <button type="button" ng-click="init()" 
+                class="btn btn-default">Hoje <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+        <button type="button" ng-click="search()" 
+                class="btn btn-primary">Consultar <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <ul class="pager">
+      <li ng-if="pagina>=1" class="previous"><a ng-click="older()" href="" >&larr; Anterior</a></li>
+      <li ng-if="lancamentos.length>0" class="next"><a ng-click="next()" href="">Próximo &rarr;</a></li>
+    </ul>
+  </nav>
+
+  <div class="list-group">
+    <a data-ng-repeat="lancamento in lancamentos" href="" ng-click="openLancamento(lancamento)" class="list-group-item">
+      <div>
+        <strong>Código: </strong>{{lancamento.id}}
+        (<small>Data de cadastro</small> {{lancamento.dataDeCadastro|date:'dd/MM/yyyy'}}<small>, data de vencimento</small> {{lancamento.dataDeVencimento|date:'dd/MM/yyyy'}}
+           <span data-ng-show="lancamento.dataDePagamento"><small>, Pago em: </small>{{lancamento.dataDePagamento|date:'dd/MM/yyyy'}}</span>)
+      </div>
+      <div class="pull-right">
+        <div class="pull-right">
+          <span class="label" ng-class="class(lancamento)" data-ng-if="lancamento.tipoLancamento==='ENTRADA'">+ {{lancamento.valor | currency:"RS$ "}}</span>
+          <span class="label" ng-class="class(lancamento)" data-ng-if="lancamento.tipoLancamento==='SAIDA'">- {{lancamento.valor | currency:"RS$ "}}</span>
+        </div>
+        <div>
+          <strong>Usuário: </strong>{{lancamento.usuario.login}}
+        </div>
+      </div>
+
+      <ul>
+        <li data-ng-if="lancamento.pessoa.id">
+          <strong>Vínculo á </strong>
+          {{lancamento.pessoa.nome}}
+        </li>
+        <li data-ng-if="lancamento.descricao">
+          <strong>Descrição: </strong>
+          {{lancamento.descricao}}
+        </li>
+        <li data-ng-show="experiencia.empresa">
+          <strong>Empresa:&nbsp</strong>
+          {{experiencia.empresa.nome}}
+        </li>
+        <li data-ng-show="experiencia.atividades">
+          <strong>Atividades Desenvolvidas:&nbsp</strong>
+          {{experiencia.atividades}}
+        </li>
+        <li data-ng-show="experiencia.observacoes">
+          <strong>Observações:&nbsp</strong>
+          {{experiencia.observacoes}}
+        </li>
+      </ul>
+    </a>
+  </div>
+  <div class="pull-right">
+    <strong>Total: R$</strong>{{total | currency:"RS$ "}}
+  </div>

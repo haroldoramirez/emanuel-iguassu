@@ -1,0 +1,54 @@
+<accordion-group is-open="panel.open1" >
+  <accordion-heading>
+      Dados da Empresa<i class="pull-right glyphicon" data-ng-class="{'glyphicon-chevron-down': panel.open1, 'glyphicon-chevron-right': !panel.open1}"></i>
+  </accordion-heading>
+  <div class="col-3 col-sm-3 col-lg-3">
+    <div class="form-group">
+      <label class="control-label">Código </label>
+      <div class="controls">
+        <input data-ng-model="empresa.id" type="number" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Nome <span class="obrigatorio">*</span></label>
+      <div class="controls">
+        <div ng-class="{'has-error':!empresa.nome}">
+          <input  data-ng-model="empresa.nome" type="text" 
+                  placeholder="Insira o nome da empresa ..." class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-sm-4 col-lg-3" >
+    <div class="form-group">
+      <label class="control-label">CNPJ</label>
+      <div class="controls">
+        <input  data-ng-model="empresa.cnpj" ui-mask="99.999.999/9999-99" type="text" 
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+        <input  data-ng-model="empresa.email" type="text" 
+                placeholder="exemplo@exemlo.com" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" >
+    <div class="form-group">
+      <label class="control-label">Telefone </label>
+      <div class="controls">
+        <input  data-ng-model="empresa.telefoneResidencial" type="text" 
+                ui-mask="(99) 9999-9999" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Contato Comercial</label>
+      <div class="controls">
+        <input  data-ng-model="empresa.telefoneComercial" 
+                ui-mask="(99) 9999-9999" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+</accordion-group>

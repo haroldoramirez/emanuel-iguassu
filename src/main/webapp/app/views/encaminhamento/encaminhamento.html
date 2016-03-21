@@ -1,0 +1,67 @@
+	<div ng-init="init()" class="page-header">
+		<h1>Encaminhamentos</h1>
+	</div>
+
+	<div class="container-fluid" ng-include="'views/encaminhamento/encaminhamento_ferramentas.html'"></div>
+
+	<accordion close-others="isOpen">
+
+		<div style="margin-bottom: 5px;" ng-include="'views/encaminhamento/encaminhamento_dados.html'"></div>
+
+		<!-- <div style="margin-bottom: 5px;" ng-include="'views/encaminhamento/encaminhamento_pesquisa.html'"></div> -->
+
+	</accordion>
+
+	<div class="btn-group btn-group-justified">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" 
+							data-ng-click="search()">
+				<span class="glyphicon glyphicon-search">&nbspConsultar</span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary" 
+							data-ng-disabled="!encaminhamento.vaga.id||!encaminhamento.candidato.id||((encaminhamento.vaga.situacao==='OCUPADA'||encaminhamento.vaga.situacao==='CANCELADA')&&!encaminhamento.id)||encaminhamento.candidato.situacao==='BLOQUEADO'||contratoVencido(encaminhamento.candidato.dataDeContrato)" 
+							data-ng-click="save()">
+				<span class="glyphicon glyphicon-save">&nbspSalvar</span>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" data-ng-click="clear()">
+				<span class="glyphicon glyphicon-file">&nbspLimpar</span>
+			</button>
+		</div>
+	</div>
+
+	<nav>
+    <ul class="pager">
+      <li ng-if="pagina>=1" class="previous"><a ng-click="older()" href="" >&larr; Anterior</a></li>
+      <li ng-if="encaminhamentos.length>0" class="next"><a ng-click="next()" href="">Próximo &rarr;</a></li>
+    </ul>
+  </nav>
+	
+	<table class="table table-hover">
+		<tr>
+			<th>Código</th>
+			<th>Salário</th>
+			<th>Candidato</th>
+			<th>Vaga</th>
+			<th>Empresa</th>
+			<th>Em andamento</th>
+			<th>Sucesso</th>
+			<th>Falha</th>
+		</tr>
+		<tr data-ng-click="edit(encaminhamento);" data-ng-repeat="encaminhamento in encaminhamentos">
+			<td>{{encaminhamento.id}}</td>
+			<td>{{encaminhamento.vaga.salario}}</td>
+			<td>{{encaminhamento.candidato.nome}}</td>
+			<td>{{encaminhamento.vaga.cargo.nome}} / código {{encaminhamento.vaga.id}}</td>
+			<td>{{encaminhamento.vaga.empresa.nome}}</td>
+			<td><span class="label label-warning" ng-if="encaminhamento.situacao==='ANDAMENTO'">Em andamento</span></td>
+			<!-- <td><span class="label label-success" ng-if="encaminhamento.situacao==='SUCESSO'">Sucesso</span></td> -->
+			<td ng-if="encaminhamento.situacao==='SUCESSO'&&!encaminhamento.lancamento.dataDePagamento"><span class="label label-warning">Sucesso e não pago</span></td>
+      <td ng-if="encaminhamento.situacao==='SUCESSO'&&encaminhamento.lancamento.dataDePagamento"><span class="label label-success">Sucesso</span></td>
+      <td ng-if="encaminhamento.situacao!=='SUCESSO'"></td>
+			<td><span class="label label-danger" ng-if="encaminhamento.situacao==='FALHA'">Falha</span></td>
+		</tr>
+	</table>

@@ -1,0 +1,66 @@
+	<div ng-init="init()" class="page-header">
+		<h1>Vagas</h1>
+	</div>
+
+  <div class="container-fluid" ng-include="'views/vaga/vaga_ferramentas.html'"></div>
+
+	<accordion close-others="isOpen">
+
+    <div style="margin-bottom: 5px;" ng-include="'views/vaga/vaga_dados.html'"></div>
+
+    <div style="margin-bottom: 5px;" ng-include="'views/endereco/endereco.html'"></div>
+
+	</accordion>
+
+	<div class="btn-group btn-group-justified">
+		<div class="btn-group">
+			<button type="button"
+              class="btn btn-default"
+              data-ng-click="search();">
+          <span class="glyphicon glyphicon-search">&nbspConsultar</span>
+      </button>
+		</div>
+		<div class="btn-group">
+			<button type="button"
+              class="btn btn-primary"
+              data-ng-disabled="!vaga.cargo.id||!vaga.salario||vaga.salario<=0"
+              data-ng-click="save()">
+          <span class="glyphicon glyphicon-save">&nbspSalvar</span>
+      </button>
+		</div>
+		<div class="btn-group">
+			<button type="button"
+              class="btn btn-default"
+              data-ng-click="clear()">
+          <span class="glyphicon glyphicon-file">&nbspLimpar</span>
+      </button>
+			</div>
+		</div>
+	
+		<nav>
+      <ul class="pager">
+        <li ng-if="pagina>=1" class="previous"><a ng-click="older()" href="" >&larr; Anterior</a></li>
+        <li ng-if="vagas.length>0" class="next"><a ng-click="next()" href="">Próximo &rarr;</a></li>
+      </ul>
+    </nav>
+		
+		<table class="table table-hover">
+			<tr>
+				<th>Código</th>
+	      <th>Salário</th>
+	      <th>Cargo</th>
+	      <th>Empresa</th>
+				<th>Ocupada</th>
+				<th>Disponível</th>
+				<th>Cancelada</th>
+			</tr>
+			<tr data-ng-click="edit(vaga);" data-ng-repeat="vaga in vagas">
+				<td>{{vaga.id}}</td>
+				<td>{{vaga.salario}}</td>
+				<td>{{vaga.cargo.nome}}</td>
+				<td>{{vaga.empresa.nome}}</td>
+				<td><span class="label label-warning" ng-if="vaga.situacao==='OCUPADA'">Ocupada</span></td>
+				<td><span class="label label-success" ng-if="vaga.situacao==='DISPONIVEL'">Disponível</span></td>
+				<td><span class="label label-default" ng-if="vaga.situacao==='CANCELADA'">Cancelada</span></td>
+			</tr>
+		</table>

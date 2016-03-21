@@ -1,0 +1,36 @@
+<div class="btn-toolbar">
+  <p class="pull-right">
+     <!-- <button ng-if="candidato.id" class="btn btn-default btn-sm"
+            data-ng-click="encaminhar()"
+            type="button" title="Clique para encaminhar o candidato'"
+            data-ng-show="candidato.id">
+      <span class="glyphicon glyphicon-send"></span> 
+    </button> -->
+    <a ng-if="candidato.id&&contrato" class="btn btn-primary btn-sm"
+            ng-href="{{contrato}}" target="_blank"
+            type="button">
+      <span class="glyphicon glyphicon-print"></span>
+    </a>
+    <!-- <button class="btn btn-default btn-sm"
+            data-ng-click="isCollapsed = !isCollapsed"
+            type="button" title="Opções de filtro">
+      <span class="glyphicon glyphicon-filter"></span>
+    </button> -->
+    <button data-ng-click="clear()" class="btn btn-default btn-sm"
+            type="button"
+            title="Limpar">
+      <span class="glyphicon glyphicon-file"></span>
+    </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="closeAll()"
+            type="button"
+            title="Clique para fechar todos os paineis">
+      <span class="glyphicon glyphicon-minus"></span>
+    </button>
+    <button class="btn btn-default btn-sm"
+            data-ng-click="openAll()"
+            type="button" title="Clique para abrir todos os paineis">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
+  </p>
+</div>

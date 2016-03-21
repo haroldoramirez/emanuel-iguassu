@@ -1,0 +1,33 @@
+<div class="view" ng-init="init()">
+
+  <div class="pull-right">
+    <a href="" class="btn btn-primary"
+       data-ng-click="openUsuario()">Adicionar Usuario
+    </a>
+  </div>
+    <h1>Usuários</h1>
+    <hr>
+    <div class="list-group">
+      <a data-ng-repeat="usuario in usuarios" href="" ng-click="openUsuario(usuario)" class="list-group-item">
+        <strong>Nome: </strong>{{usuario.nome}}, <strong>Login: </strong>{{usuario.login}},
+        <small>Cadastrado em {{usuario.dataDeCadastro|date:'dd/MM/yyyy'}}</small>
+        <div class="pull-right">
+          <span class="label label-danger" data-ng-if="usuario.perfil==='BLOQUEADO'">Bloqueado</span>
+          <span class="label label-success" data-ng-if="usuario.perfil==='GERENTE'">Gerente</span>
+          <span class="label label-primary" data-ng-if="usuario.perfil==='ADMINISTRADOR'">Administrador</span>
+          <span class="label label-info" data-ng-if="usuario.perfil==='ATENDENTE'">Atendente</span>
+        </div>
+        <ul>  
+          <li data-ng-show="usuario.dataNasc">
+            <strong>Data de nascimento:&nbsp</strong>
+            {{usuario.dataNasc|date:'dd/MM/yyyy'}}
+          </li>
+          <li data-ng-show="usuario.email">
+            <strong>Email:&nbsp</strong>
+            {{usuario.email}}
+          </li>
+        </ul>
+      </a>
+    </div>
+
+</div>
