@@ -14,7 +14,7 @@ public class Bairro extends SpringData<Long> {
 
 	private static final long serialVersionUID = -1238093511306157850L;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 100)
 	private String nome;
 
 	@ManyToOne(cascade = CascadeType.MERGE, optional = false)

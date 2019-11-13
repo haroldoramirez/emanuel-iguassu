@@ -10,16 +10,16 @@ public class Endereco{
     @ManyToOne(/* cascade = CascadeType.DETACH, */optional = true)
     private Bairro bairro;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String rua;
 
-    @Column(length = 8)
+    @Column(length = 10)
     private String numero;
 
-    @Column(length = 15)
+    @Column(length = 25)
     private String cep;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String complemento;
 
     public Bairro getBairro() {

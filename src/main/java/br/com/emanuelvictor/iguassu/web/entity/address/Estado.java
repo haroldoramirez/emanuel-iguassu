@@ -12,7 +12,7 @@ public class Estado extends SpringData<Long> {
 
 	private static final long serialVersionUID = -8453641720904222519L;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 100)
 	private String nome;
 
     @Column(length = 2)

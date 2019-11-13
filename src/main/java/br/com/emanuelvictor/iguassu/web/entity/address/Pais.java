@@ -12,7 +12,7 @@ public class Pais extends SpringData<Long> {
 	 * 
 	 */
 	private static final long serialVersionUID = -421522803783661954L;
-	@Column(nullable = false, length = 30, unique = true)
+	@Column(nullable = false, length = 100, unique = true)
 	private String nome;
 
 	public Pais(String nome) {
